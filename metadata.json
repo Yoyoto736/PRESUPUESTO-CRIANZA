@@ -1,0 +1,6 @@
+{
+  "name": "Presupuesto de Crianza",
+  "description": "Planificador de presupuesto exhaustivo y menu nutricional semanal para un nino de 3 anos, con descarga en Excel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
