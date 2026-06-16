@@ -29,17 +29,36 @@ import { exportBudgetToExcel, getMonthlyCost, getAnnualCost } from './excelUtils
 
 export default function App() {
   // State
+  const [appTitle, setAppTitle] = useState<string>(() => {
+    const saved = localStorage.getItem('app_title');
+    return saved || 'Presupuesto Integral de Crianza';
+  });
+
   const [budgetItems, setBudgetItems] = useState<BudgetItem[]>(() => {
-    const saved = localStorage.getItem('budget_data');
-    return saved ? JSON.parse(saved) : INITIAL_BUDGET_ITEMS;
+    try {
+      const saved = localStorage.getItem('budget_data');
+      return saved ? JSON.parse(saved) : INITIAL_BUDGET_ITEMS;
+    } catch (e) {
+      console.error("Error cargando presupuesto:", e);
+      return INITIAL_BUDGET_ITEMS;
+    }
   });
 
   const [mealPlan, setMealPlan] = useState<WeeklyMealPlan>(() => {
-    const saved = localStorage.getItem('meal_plan_data');
-    return saved ? JSON.parse(saved) : INITIAL_WEEKLY_MEAL_PLAN;
+    try {
+      const saved = localStorage.getItem('meal_plan_data');
+      return saved ? JSON.parse(saved) : INITIAL_WEEKLY_MEAL_PLAN;
+    } catch (e) {
+      console.error("Error cargando plan de comidas:", e);
+      return INITIAL_WEEKLY_MEAL_PLAN;
+    }
   });
 
   const [foodItems] = useState<FoodItem[]>(INITIAL_FOOD_ITEMS);
+
+  useEffect(() => {
+    localStorage.setItem('app_title', appTitle);
+  }, [appTitle]);
 
   useEffect(() => {
     localStorage.setItem('budget_data', JSON.stringify(budgetItems));
@@ -92,6 +111,12 @@ export default function App() {
 
   const totalAnnualCost = useMemo(() => {
     return budgetItems.reduce((acc, item) => acc + getAnnualCost(item), 0);
+  }, [budgetItems]);
+
+  const maintenanceMonthlyCost = useMemo(() => {
+    return budgetItems
+      .filter(item => item.category === 'Mantenimiento y Hogar')
+      .reduce((acc, item) => acc + getMonthlyCost(item), 0);
   }, [budgetItems]);
 
   // Consolidate ingredient quantities dynamically across the entire weekly meal plan!
@@ -268,9 +293,15 @@ export default function App() {
               <Baby className="w-7 h-7" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A18]">Presupuesto Integral de Crianza</h1>
-                <span className="text-xs bg-[#E8F0EB] text-emerald-800 font-medium px-2 py-0.5 rounded-full border border-[#D5E5DC]">
+              <div className="flex items-center gap-2 w-full">
+                <input
+                  type="text"
+                  value={appTitle}
+                  onChange={(e) => setAppTitle(e.target.value)}
+                  className="text-xl md:text-2xl font-semibold tracking-tight text-[#1A1A18] bg-transparent border-none focus:ring-0 focus:outline-none flex-1 min-w-0"
+                  placeholder="Nombre del presupuesto..."
+                />
+                <span className="text-xs bg-[#E8F0EB] text-emerald-800 font-medium px-2 py-0.5 rounded-full border border-[#D5E5DC] whitespace-nowrap">
                   3 Años
                 </span>
               </div>
@@ -325,7 +356,7 @@ export default function App() {
         </AnimatePresence>
 
         {/* Global Stats Overview Dashboard */}
-        <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8" id="overview-widgets">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8" id="overview-widgets">
           
           <div className="bg-white p-5 rounded-2xl border border-[#EBEBE8] shadow-xs flex items-center justify-between">
             <div className="space-y-1">
@@ -355,24 +386,11 @@ export default function App() {
 
           <div className="bg-white p-5 rounded-2xl border border-[#EBEBE8] shadow-xs flex items-center justify-between">
             <div className="space-y-1">
-              <span className="text-[11px] font-medium uppercase tracking-wider text-gray-400">Consumo de Cambur</span>
+              <span className="text-[11px] font-medium uppercase tracking-wider text-gray-400">Mantenimiento/Reparaciones</span>
               <p className="text-2xl md:text-3xl font-bold text-[#1A1A18] tracking-tight">
-                {consolidatedIngredients.find(i => i.id === 'cambur')?.weeklyQty || 0} u.
+                ${maintenanceMonthlyCost.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
-              <p className="text-[11px] text-amber-700 font-medium">
-                Semanal ({((consolidatedIngredients.find(i => i.id === 'cambur')?.weeklyQty || 0) * 4.33).toFixed(1)} u/mes)
-              </p>
-            </div>
-            <div className="p-3 bg-amber-50 text-amber-700 rounded-xl border border-amber-100">
-              <Apple className="w-6 h-6" />
-            </div>
-          </div>
-
-          <div className="bg-white p-5 rounded-2xl border border-[#EBEBE8] shadow-xs flex items-center justify-between">
-            <div className="space-y-1">
-              <span className="text-[11px] font-medium uppercase tracking-wider text-gray-400">Mantenimiento Preventivo</span>
-              <p className="text-lg font-semibold text-[#1A1A18] leading-tight">Neveras, Licuadora, AC</p>
-              <p className="text-[11px] text-[#71716A] leading-relaxed">Preservación microbiológica e higiene crucial para 3 años.</p>
+              <p className="text-[11px] text-gray-500 font-medium">Fondo mensual para hogar e higiene</p>
             </div>
             <div className="p-3 bg-[#FAF8F5] text-amber-900 rounded-xl border border-[#EAE6DF]">
               <Wrench className="w-6 h-6" />
