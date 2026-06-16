@@ -31,7 +31,7 @@ export default function App() {
   // State
   const [appTitle, setAppTitle] = useState<string>(() => {
     const saved = localStorage.getItem('app_title');
-    return saved || 'Presupuesto Integral de Crianza';
+    return saved || 'Presupuesto Integral de Crianza Lucas';
   });
 
   const [budgetItems, setBudgetItems] = useState<BudgetItem[]>(() => {

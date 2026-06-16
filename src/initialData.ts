@@ -7,7 +7,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Supermercado & Lácteos',
     category: 'Alimentación',
     frequency: 'Mensual',
-    cost: 180,
+    cost: 80,
     quantity: 12,
     comment: 'Compra general de víveres, leche entera de crecimiento, cereales fortificados, huevos y víveres para el niño.'
   },
@@ -16,7 +16,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Proteínas Especiales (Pollo y Carne)',
     category: 'Alimentación',
     frequency: 'Mensual',
-    cost: 55,
+    cost: 40,
     quantity: 12,
     comment: 'Pollo fresco desmechado, carne de res magra tierna y pescado sin espinas para sus almuerzos/cenas semanales.'
   },
@@ -25,7 +25,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Frutas y Verduras Frescas',
     category: 'Alimentación',
     frequency: 'Mensual',
-    cost: 40,
+    cost: 20,
     quantity: 12,
     comment: 'Suministro semanal de cambur, manzana, auyama, espinacas, plátano, zanahorias y papas.'
   },
@@ -34,7 +34,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Agua Filtrada / Mineral',
     category: 'Alimentación',
     frequency: 'Mensual',
-    cost: 15,
+    cost: 10,
     quantity: 12,
     comment: 'Agua de alta pureza necesaria para la hidratación libre y preparación de avenas y jugos.'
   },
@@ -45,7 +45,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Seguro Médico Pediátrico',
     category: 'Salud y Seguro Médico',
     frequency: 'Mensual',
-    cost: 110,
+    cost: 130,
     quantity: 12,
     comment: 'Póliza de salud con cobertura de emergencias, hospitalización y consultas pediátricas integrales.'
   },
@@ -53,8 +53,8 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     id: 'b6',
     name: 'Consulta Pediátrica Mensual',
     category: 'Salud y Seguro Médico',
-    frequency: 'Mensual',
-    cost: 60,
+    frequency: 'Trimestral',
+    cost: 20,
     quantity: 12,
     comment: 'Control rutinario mensual del Niño Sano (monitoreo de peso, talla, desarrollo cognitivo y motor).'
   },
@@ -63,7 +63,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Esquema de Vacunas Anual',
     category: 'Salud y Seguro Médico',
     frequency: 'Anual',
-    cost: 220,
+    cost: 80,
     quantity: 1,
     comment: 'Refuerzos anuales sugeridos a los 3 años: Neumococo, Meningococo, Influenza anual y Varicela.'
   },
@@ -72,7 +72,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Botiquín de Primeros Auxilios',
     category: 'Salud y Seguro Médico',
     frequency: 'Trimestral',
-    cost: 25,
+    cost: 20,
     quantity: 4,
     comment: 'Medicamentos básicos: Acetaminofén (antipirético), sueros de rehidratación oral, parches y cremas protectoras cutáneas.'
   },
@@ -83,7 +83,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Inscripción Anual Preescolar',
     category: 'Educación y Colegio',
     frequency: 'Anual',
-    cost: 350,
+    cost: 150,
     quantity: 1,
     comment: 'Derechos de matrícula anual en centro de educación inicial / maternal para el año lectivo.'
   },
@@ -92,7 +92,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Mensualidad del Colegio (Maternal)',
     category: 'Educación y Colegio',
     frequency: 'Mensual',
-    cost: 240,
+    cost: 50,
     quantity: 11, // Generalmente 11 meses escolares
     comment: 'Servicio de educación inicial matutina de lunes a viernes, socialización temprana y estimulación de psicomotricidad.'
   },
@@ -110,73 +110,49 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Uniformes del Colegio',
     category: 'Educación y Colegio',
     frequency: 'Anual',
-    cost: 110,
+    cost: 100,
     quantity: 1,
     comment: 'Par de camisas de diario, monos de educación física, shorts de repuesto y morral pequeño adaptado a su espalda.'
   },
-
-  // Transporte
-  {
-    id: 'b13',
-    name: 'Combustible / Gasolina de Traslado',
-    category: 'Transporte y Movilidad',
-    frequency: 'Mensual',
-    cost: 45,
-    quantity: 12,
-    comment: 'Gatos asociados al combustible para transporte diario ida y vuelta al colegio preescolar y consultas.'
-  },
-  {
-    id: 'b14',
-    name: 'Silla para Auto Infantil (Car Seat)',
-    category: 'Transporte y Movilidad',
-    frequency: 'Única vez',
-    cost: 130,
-    quantity: 1,
-    comment: 'Asiento de seguridad homologada para auto del grupo 1/2/3 con arnés de 5 puntos de anclaje (duradero para varios años).'
-  },
   {
     id: 'b15',
-    name: 'Mantenimiento Preventivo de Auto (Prorrateo)',
+    name: 'Transporte',
     category: 'Transporte y Movilidad',
-    frequency: 'Semestral',
-    cost: 90,
+    frequency: 'Mensual',
+    cost: 20,
     quantity: 2,
     comment: 'Reserva para cambio de aceite, filtros y amortización por uso urbano dedicado al infante.'
   },
-
-  // Ropa
   {
     id: 'b16',
-    name: 'Renovación Bimestral de Ropa',
+    name: 'Renovación Trimestral de Ropa',
     category: 'Ropa y Vestimenta',
-    frequency: 'Bimensual',
-    cost: 80,
+    frequency: 'Trimestral',
+    cost: 60,
     quantity: 6,
     comment: 'Adquisición de franelas, shorts y mudas cómodas. Los niños de 3 años cambian de talla aproximadamente cada 2-3 meses.'
   },
   {
     id: 'b17',
-    name: 'Calzado Ergonómico de Juego',
+    name: 'Calzado de Diario',
     category: 'Ropa y Vestimenta',
-    frequency: 'Trimestral',
-    cost: 45,
+    frequency: 'Semestral',
+    cost: 50,
     quantity: 4,
     comment: 'Zapatos con suela flexible y soporte adecuado para evitar tropiezos y permitir el correcto desarrollo del arco plantar.'
   },
   {
     id: 'b18',
-    name: 'Pañales de Transición (Pull-ups) y Toallas',
+    name: 'Papel Higienico y Toallas',
     category: 'Ropa y Vestimenta',
     frequency: 'Mensual',
-    cost: 35,
+    cost: 5,
     quantity: 12,
     comment: 'Pañales tipo calzón para entrenamiento diurno/nocturno mientras consolida el control de esfínteres definitivo.'
   },
-
-  // Mantenimiento y Hogar
   {
     id: 'b19',
-    name: 'Mant. de Nevera e Higienización',
+    name: 'Mantenimientos y Arreglos',
     category: 'Mantenimiento y Hogar',
     frequency: 'Semestral',
     cost: 75,
@@ -184,49 +160,29 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     comment: 'Mantenimiento preventivo de nevera (recarga de gas, limpieza profunda de serpentines y filtros de agua) indispensable para preservar carnes, frutas y papillas higiénicas para el niño.'
   },
   {
-    id: 'b20',
-    name: 'Desinfección de Aire Acondicionado',
-    category: 'Mantenimiento y Hogar',
-    frequency: 'Semestral',
-    cost: 50,
-    quantity: 2,
-    comment: 'Servicio técnico de limpieza física y química para aires acondicionados de la habitación infantil. Crucial para prevenir bronquitis y alérgenos.'
-  },
-  {
-    id: 'b21',
-    name: 'Limpieza de Licuadora y Procesador',
-    category: 'Mantenimiento y Hogar',
-    frequency: 'Anual',
-    cost: 30,
-    quantity: 1,
-    comment: 'Servicio de afilado de cuchillas de procesador, desinfección de empacaduras y base del motor de electrodomésticos.'
-  },
-  {
     id: 'b22',
-    name: 'Detergente Hipoalergénico Infantil',
+    name: 'Detergente Ropa',
     category: 'Mantenimiento y Hogar',
     frequency: 'Mensual',
-    cost: 14,
+    cost: 10,
     quantity: 12,
     comment: 'Detergente con pH neutro, libre de perfumes agresivos y colorantes para lavar ropa infantil y frazadas.'
   },
-
-  // Recreación
   {
     id: 'b23',
     name: 'Juguetes de Estimulación y Libros',
     category: 'Recreación y Estimulación',
-    frequency: 'Mensual',
-    cost: 25,
+    frequency: 'Trimestral',
+    cost: 20,
     quantity: 12,
     comment: 'Rompecabezas de piezas grandes, bloques de construcción de madera, libros sensoriales Ilustrados de cartón grueso.'
   },
   {
     id: 'b24',
-    name: 'Natación Inicial / Sesiones Sensoriales',
+    name: 'Natación Inicial / o similar',
     category: 'Recreación y Estimulación',
     frequency: 'Mensual',
-    cost: 65,
+    cost: 25,
     quantity: 12,
     comment: 'Curso semanal de natación infantil o matrogimnasia para afianzar la coordinación física y la seguridad acuática.'
   },
@@ -235,7 +191,7 @@ export const INITIAL_BUDGET_ITEMS: BudgetItem[] = [
     name: 'Salidas al Parque y Recreación',
     category: 'Recreación y Estimulación',
     frequency: 'Mensual',
-    cost: 40,
+    cost: 10,
     quantity: 12,
     comment: 'Gastos de parque inflable, helados, entradas a museos infantiles y salidas familiares de fin de semana.'
   }
